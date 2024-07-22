@@ -1,0 +1,30 @@
+[store]
+[store.primary]
+connection = "postgresql://graph-node:let-me-in@postgres:5432/graph-node"
+pool_size = 10
+
+[deployment]
+[[deployment.rule]]
+store = "primary"
+indexers = [ "default" ]
+
+[chains]
+ingestor = "default"
+
+# [chains.arbitrum]
+# shard = "primary"
+# provider = [
+#   { label = "arbitrum", url="https://arbitrum.llamarpc.com", features = [] }
+# ]
+
+[chains.mainnet]
+shard = "primary"
+provider = [
+  { label = "mainnet", url="https://eth.drpc.org", features = [] }
+]
+
+[chains.sepolia]
+shard = "primary"
+provider = [
+  { label = "sepolia", url="https://ethereum-sepolia-rpc.publicnode.com", features = [] }
+]
