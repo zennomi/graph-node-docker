@@ -10,6 +10,7 @@ services:
       - '8040:8040'
     depends_on:
       - postgres
+    restart: always
     volumes:
       - ./graph-node-config.toml:/data/config.toml
     extra_hosts:
@@ -21,6 +22,11 @@ services:
       ETHEREUM_ANCESTOR_COUNT: 1
       ipfs: 'https://ipfs.satsuma.xyz'
     privileged: true
+    deploy:
+      resources:
+        limits:
+          cpus: '2.0'
+          memory: 1G
   postgres:
     image: postgres
     command:
